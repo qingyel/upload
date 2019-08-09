@@ -1,0 +1,32 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper
+        PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+        "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+
+<mapper namespace="com.wys.mapper.DataFileMapper">
+    <insert id="add" parameterType="DataFile">
+            insert into data_file (id, `name`,url,status,md5 ) values (#{id},#{name},#{url},#{status},#{md5})
+    </insert>
+<!--    <delete id="delete" parameterType="DataFile">-->
+<!--            delete from data_file where id= #{id}-->
+<!--    </delete>-->
+    <select id="get" parameterType="String" resultType="DataFile">
+            select * from   data_file  where id= #{id}
+    </select>
+    <select id="getByMd5" parameterType="String" resultType="DataFile">
+            select * from   data_file  where md5= #{md5}
+    </select>
+    <update id="update" parameterType="DataFile">
+            update data_file set name=#{name} ,
+            url = #{url},
+            status= #{status},
+            md5 = #{md5}
+            where id=#{id}
+    </update>
+<!--    <select id="list" resultType="DataFile">-->
+<!--        select * from data_file-->
+<!--    </select>-->
+<!--    <select id="total" resultType="int">-->
+<!--            select count(*) from   data_file-->
+<!--    </select>-->
+</mapper>
